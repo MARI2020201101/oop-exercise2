@@ -17,12 +17,35 @@ public class SutdaDeck {
             cards[cards.length/2+i]= new SutdaCard(i+1,false);
         }
     }
+    public void shuffle(){
+        for(int i =0; i <cards.length;i++){
+            int j = (int) (Math.random()*cards.length);
+            SutdaCard tmp = cards[i];
+            cards[i] = cards[j];
+            cards[j] = tmp;
+        }
+    }
+    public SutdaCard pick(int index){
+        if(index<0 || index>=cards.length) return null;
+        return cards[index];
+    }
+    public SutdaCard pick(){
+        return cards[(int) (Math.random()* cards.length)];
+    }
 
     public static void main(String[] args) {
         SutdaDeck deck = new SutdaDeck();
+
+        System.out.println(deck.pick(0));
+        System.out.println(deck.pick());
+        deck.shuffle();
+
         for(int i = 0; i<deck.cards.length; i++){
             System.out.print(deck.cards[i]+ ",");
         }
+
+        System.out.println();
+        System.out.println(deck.pick(0));
     }
 }
 class SutdaCard{
