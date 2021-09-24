@@ -1,6 +1,8 @@
 package exercise2;
 
 public class MyTv2 {
+
+    private int prevChannel;
     private boolean isPowerOn;
     private int channel;
     private int volume;
@@ -15,8 +17,17 @@ public class MyTv2 {
 
         t.setChannel(10);
         System.out.println("CH : " + t.getChannel());
-        t.setVolume(20);
-        System.out.println("VOL : " + t.getVolume());
+        t.setChannel(20);
+        System.out.println("CH : " + t.getChannel());
+        t.gotoPrevChannel();
+        System.out.println("CH : " + t.getChannel());
+        t.gotoPrevChannel();
+        System.out.println("CH : " + t.getChannel());
+
+    }
+
+    public void gotoPrevChannel(){
+        setChannel(prevChannel);
     }
 
     public int getVolume() {
@@ -30,9 +41,16 @@ public class MyTv2 {
     }
 
     public void setChannel(int channel) {
-        if(channel<MIN_CHANNEL) this.channel = MIN_CHANNEL;
-        else if(channel>MAX_CHANNEL) this.channel =MAX_CHANNEL;
-        else this.channel = channel;
+        this.prevChannel = getChannel();
+        if(channel<MIN_CHANNEL){
+            this.channel = MIN_CHANNEL;
+        }
+        else if(channel>MAX_CHANNEL){
+            this.channel =MAX_CHANNEL;
+        }
+        else {
+            this.channel = channel;
+        }
     }
 
     public int getChannel() {
