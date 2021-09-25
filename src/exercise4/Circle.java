@@ -6,6 +6,10 @@ public class Circle extends Shape{
     Circle(){
         this(new Point(0,0),0.0);
     }
+    Circle(double r){
+        this(new Point(),r);
+
+    }
     Circle(Point p, double r){
         super(p);
         if(r>0){
